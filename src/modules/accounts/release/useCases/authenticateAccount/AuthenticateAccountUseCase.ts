@@ -9,6 +9,7 @@ class AuthenticateAccountUseCase {
 
     async execute(email: string, password: string): Promise<IAccountDTO> {
         const account = await this.accountsRepository.findByEmail(email);
+
         if (!account) {
             throw new AppError("Email or password invalid!");
         }
